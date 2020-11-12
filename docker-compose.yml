@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mitmproxy:
+    image: mitmproxy/mitmproxy:5.1.1
+    command: mitmweb --mode socks5 --no-web-open-browser --web-port 8081 --web-host 0.0.0.0
+    restart: always
+    network_mode: host
+    volumes:
+    - ./data:/home/mitmproxy/.mitmproxy
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+    - 9080:80/tcp
+    volumes:
+    - ./proxy-conf:/usr/share/nginx/html:ro
