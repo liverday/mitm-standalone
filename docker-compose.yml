@@ -1,7 +1,7 @@
 version: '2'
 services:
   mitmproxy:
-    image: mitmproxy/mitmproxy:5.1.1
+    image: mitmproxy/mitmproxy:6.0.1
     command: mitmweb --mode socks5 --no-web-open-browser --web-port 8081 --web-host 0.0.0.0
     restart: always
     network_mode: host
